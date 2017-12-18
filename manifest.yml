@@ -1,0 +1,11 @@
+applications:
+- name: moviefun
+  path: /build/libs/moviefun-1.1.0-SNAPSHOT.war
+  host: moviefun-pk
+  memory: 1G
+  instances: 1
+  env:
+    S3_ENDPOINTURL: http://127.0.0.1:9000
+    S3_ACCESSKEY: 14OJWBL39EQZYBBQL10K
+    S3_SECRETKEY: h/GHuWWl90wO69jxSm/P84A23h2lhCENpGwbFCpv
+    S3_BUCKETNAME: moviefun
