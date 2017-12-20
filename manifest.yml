@@ -1,17 +1,23 @@
 ---
 memory: 1G
 instances: 1
+services:
+- movie-fun-sso
 applications:
-- name: album-service
+- name: album-service-pk
   path: applications/album-service/build/libs/album-service-1.1.0-SNAPSHOT.jar
   services:
   - album-database
-- name: movie-service
+  env:
+    GRANT_TYPE: client_credentials
+- name: movie-service-pk
   path: applications/movie-service/build/libs/movie-service-1.1.0-SNAPSHOT.jar
   services:
   - movie-database
-- name: movie-fun-app
+  env:
+    GRANT_TYPE: client_credentials
+- name: movie-fun-app-pk
   path: applications/movie-fun-app/build/libs/movie-fun-app-1.1.0-SNAPSHOT.war
   env:
-    ALBUMS_URL: http://album-service.cfapps-02.haas-66.pez.pivotal.io/albums
-    MOVIES_URL: http://movie-service.cfapps-02.haas-66.pez.pivotal.io/movies
+    ALBUMS_URL: https://album-service-pk.apps.cumuluslabs.io/albums
+    MOVIES_URL: https://movie-service-pk.apps.cumuluslabs.io/movies
